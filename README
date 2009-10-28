@@ -1,7 +1,20 @@
 =============================================================================
 Project:   Twitapp
-Copyright: ©2009 My Company, Inc.
+Copyright: ©2009
+Author: Joshua Holt
 =============================================================================
 
-TODO: Describe Your Project
 
+This is an attempt to create a twitter search application in SproutCore.
+Eventually this will turn into a sweet Twitter application built on the extremely powerful SproutCore framework.
+
+*** This is quick and dirty hack-y code ***
+I plan to revisit this app in my spare time and do things proper.
+
+Please feel free to fork this until it's done :)
+
+*** The latest abbot and SC is required for this to work. (Build 1009) ***
+
+--
+cheers,
+Joshua Holt
