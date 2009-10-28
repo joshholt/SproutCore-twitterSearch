@@ -23,6 +23,7 @@ Twitapp.mainPage = SC.Page.design({
       searchButton: SC.ButtonView.design({
         layout: { top: 0, left: 285, height: 24, width: 100},
         title: "Search".loc(),
+        isDefault: YES,
         target: 'Twitapp.searchController',
         action: 'search'
       })
