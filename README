@@ -15,6 +15,19 @@ Please feel free to fork this until it's done :)
 
 *** The latest abbot and SC is required for this to work. (Build 1009) ***
 
+If you want to statically build this app you will need to add this to your 
+apache (VirtualHost) config. 
+
+	{{{
+		
+		<VirtualHost *:80>
+			ProxyRequests Off
+			ProxyPass			/twitapp/search.json	http://search.twitter.com/search.json
+			ProxyReversePass	/twitapp/search.json	http://search.twitter.com/search.json
+		</VirtualHost>
+	
+	}}}
+
 --
 cheers,
 Joshua Holt
