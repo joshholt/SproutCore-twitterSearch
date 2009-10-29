@@ -14,6 +14,6 @@
 Twitapp.Tweet = SC.Record.extend(
 /** @scope Twitapp.Tweet.prototype */ {
 
-  // primaryKey: 'id'
+  primaryKey: 'id'
 
 }) ;

@@ -2,7 +2,7 @@
 // Project:   Twitapp.TwitterDataSource
 // Copyright: ©2009 My Company, Inc.
 // ==========================================================================
-/*globals Twitapp */
+/*globals unescape Twitapp */
 
 sc_require('models/tweet');
 Twitapp.TWEETS_QUERY = SC.Query.local(Twitapp.Tweet, { orderBy: 'id DESC', url: 'search.json?rpp=10&q=twitter' });
@@ -37,6 +37,7 @@ Twitapp.TwitterDataSource = SC.DataSource.extend(
       var recs = response.get('body').results;
       for (var i=0; i < recs.length; i++) {
         recs[i].guid = recs.length - i;
+        recs[i].searchTerm = unescape(response.get('body').query);
       }
       store.loadRecords(Twitapp.Tweet, recs);
       store.dataSourceDidFetchQuery(query);
@@ -56,11 +57,14 @@ Twitapp.TwitterDataSource = SC.DataSource.extend(
   },
   
   createRecord: function(store, storeKey) {
-    
-    // TODO: Add handlers to submit new records to the data source.
-    // call store.dataSourceDidComplete(storeKey) when done.
-    
-    return NO ; // return YES if you handled the storeKey
+    var newId = store.recordsFor(Twitapp.Search).length();
+    var datahash = store.readEditableDataHash(storeKey);
+    datahash.guid = newId + 1;
+    store.dataSourceDidComplete(storeKey,null);
+    if (Twitapp.db) {
+      Twitapp.dumpRecordsToDatabase.invokeLater();
+    }
+    return YES;
   },
   
   updateRecord: function(store, storeKey) {

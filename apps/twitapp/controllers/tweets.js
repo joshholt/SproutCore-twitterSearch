@@ -6,12 +6,13 @@
 
 /** @class
 
-  (Document Your Controller Here)
+  This controller provides the tweets for the selected saved search.
 
   @extends SC.ArrayController
 */
 Twitapp.tweetsController = SC.ArrayController.create(
 /** @scope Twitapp.tweets.prototype */ {
   
-
+  contentBinding: 'Twitapp.searchController.tweets'
+  
 }) ;

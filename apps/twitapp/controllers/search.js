@@ -13,17 +13,7 @@
 Twitapp.searchController = SC.ObjectController.create(
 /** @scope Twitapp.searchController.prototype */ {
   
-  queryString: null,
+  contentBinding: 'Twitapp.searchesController.selection',
+  contentBindingDefault: SC.Binding.single()
   
-  search: function() {
-    var queryString = this.get('queryString');
-    if (!queryString) return null;
-    var content = Twitapp.tweetsController.get('content');
-    if (content ) {
-     content.setPath('query.url','search.json?rpp=10&q=%@'.fmt(escape(queryString)));
-     content.refresh(); 
-    }
-  }
-  
-
 }) ;
