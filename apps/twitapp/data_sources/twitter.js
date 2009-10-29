@@ -57,13 +57,10 @@ Twitapp.TwitterDataSource = SC.DataSource.extend(
   },
   
   createRecord: function(store, storeKey) {
-    var newId = store.recordsFor(Twitapp.Search).length();
+    var newId = store.find(Twitapp.Search).length();
     var datahash = store.readEditableDataHash(storeKey);
     datahash.guid = newId + 1;
-    store.dataSourceDidComplete(storeKey,null);
-    if (Twitapp.db) {
-      Twitapp.dumpRecordsToDatabase.invokeLater();
-    }
+    store.dataSourceDidComplete(storeKey,null,newId + 1);
     return YES;
   },
   

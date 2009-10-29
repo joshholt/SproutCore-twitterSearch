@@ -101,6 +101,7 @@ Twitapp.dumpRecordsToDatabase = function() {
 Twitapp.startApplication = function() {
   var searches = Twitapp.get('store').find(Twitapp.SEARCHES_QUERY);
   Twitapp.searchesController.set('content',searches);
+  Twitapp.setPath('store.dataSource', 'Twitapp.TwitterDataSource');
 };
  
 Twitapp.loadFixtures = function() {

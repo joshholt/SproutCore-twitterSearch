@@ -15,6 +15,7 @@ Twitapp.searchesController = SC.ArrayController.create(
   allowsMultipleSelection: NO,
   allowsEmptySelection: NO,
   queryString: null,
+  
   search: function() {
     var queryString = this.get('queryString');
     var savedQuerries = this.getEach('searchTerm');
@@ -23,4 +24,5 @@ Twitapp.searchesController = SC.ArrayController.create(
     var rec = Twitapp.get('store').createRecord(Twitapp.Search,{searchTerm: queryString, unreadTweetsCount: 10});
     Twitapp.searchesController.selectObject(rec);
   }
+  
 });
