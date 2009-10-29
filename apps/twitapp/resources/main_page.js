@@ -22,7 +22,7 @@ Twitapp.mainPage = SC.Page.design({
     }),
     
     searchView: SC.View.design({
-      layout: { centerX: 0, centerY: -210, height: 140, width: 400},
+      layout: { top: 50, left: 310, height: 50, width: 400},
       childViews: 'searchField searchButton'.w(),
       
       searchField: SC.TextFieldView.design({
@@ -42,7 +42,7 @@ Twitapp.mainPage = SC.Page.design({
     
     tweetList: SC.ScrollView.design({
       hasHorizontalScroller: NO,
-      layout: { centerX: 0, centerY: 0, width: 400, height: 500 },
+      layout: { top: 100, left: 310, width: 400, height: 500 },
       contentView: SC.ListView.design({
         contentBinding: 'Twitapp.tweetsController',
         selectionBinding: 'Twitapp.tweetsController.selection',

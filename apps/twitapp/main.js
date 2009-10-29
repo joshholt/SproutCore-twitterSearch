@@ -102,6 +102,7 @@ Twitapp.startApplication = function() {
   var searches = Twitapp.get('store').find(Twitapp.SEARCHES_QUERY);
   Twitapp.searchesController.set('content',searches);
   Twitapp.setPath('store.dataSource', 'Twitapp.TwitterDataSource');
+  Twitapp.mainPage.mainPane.searchView.searchField.becomeFirstResponder();
 };
  
 Twitapp.loadFixtures = function() {
