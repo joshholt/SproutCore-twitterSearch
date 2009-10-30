@@ -38,6 +38,7 @@ Twitapp.TwitterDataSource = SC.DataSource.extend(
       for (var i=0; i < recs.length; i++) {
         recs[i].guid = recs.length - i;
         recs[i].searchTerm = unescape(response.get('body').query);
+        recs[i].text = recs[i].text.unescapeHTML();
       }
       store.loadRecords(Twitapp.Tweet, recs);
       store.dataSourceDidFetchQuery(query);
