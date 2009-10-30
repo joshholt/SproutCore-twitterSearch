@@ -7,10 +7,10 @@ Twitapp.String = {
   },
   
   unescapeHTML: function () {
-    return this.stripTags().replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    return this.stripTags().replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'\"');
   }
   
 };
 
 // Apply Twitapp.String mixin to built-in String object
-SC.supplement(String.prototype, Twitapp.String) ;
+SC.supplement(String.prototype, Twitapp.String);
