@@ -66,8 +66,8 @@ Twitapp.mainPage = SC.Page.design({
         icon: 'twitapp-glossy-refresh-icon',
         titleMinWidth:0,
         title: '',
-        target: 'Orion.searchController',
-        action: 'refresSearch'
+        target: 'Twitapp.searchController',
+        action: 'refreshSearch'
       })
     })
   })

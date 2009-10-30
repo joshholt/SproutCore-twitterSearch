@@ -16,6 +16,10 @@ Twitapp.searchController = SC.ObjectController.create(Twitapp.RecordStatus,
   contentBinding: 'Twitapp.searchesController.selection',
   contentBindingDefault: SC.Binding.single(),
   
+  refreshSearch: function() {
+    this.get('tweets').refresh();
+  },
+  
   recordStatusDidChange: function(status) {
     var content = this.get('content');
     // console.log('search:(%@), status:(%@)'.fmt(content.get('searchTerm'),status));
