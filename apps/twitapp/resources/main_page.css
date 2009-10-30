@@ -9,3 +9,19 @@ body {
   -moz-box-shadow: #000 1px 3px 40px ;
   color: black;
 }
+
+.twitapp-glossy-refresh-icon {
+  width:16px;
+  height:16px;
+  background: no-repeat sc_static('resources/icons/refresh.png');
+}
+
+.twitapp-subdued-refresh-icon {
+  width:16px;
+  height:16px;
+  background: no-repeat sc_static('resources/icons/old-refresh.png');
+}
+
+.sc-button-view img {
+  left: -1px !important;
+}

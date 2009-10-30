@@ -27,14 +27,14 @@ Twitapp.mainPage = SC.Page.design({
       borderStyle: SC.BORDER_GRAY,
       backgroundColor: "#dedede",
       layout: { top: 40, left: 310, width: 430, height: 600 },
-      childViews: 'searchView tweetList'.w(),
+      childViews: 'searchView tweetList refreshButton'.w(),
       
       searchView: SC.View.design({
         layout: { top: 20, left: 20, height: 50, right: 20},
         childViews: 'searchField searchButton'.w(),
 
         searchField: SC.TextFieldView.design({
-          layout: { top: 2, left: 10, height: 18, width: 260 },
+          layout: { top: 2, left: 10, height: 21, width: 260 },
           hint: "Search for #sproutcore".loc(),
           valueBinding: 'Twitapp.searchesController.queryString'
         }),
@@ -50,14 +50,24 @@ Twitapp.mainPage = SC.Page.design({
 
       tweetList: SC.ScrollView.design({
         hasHorizontalScroller: NO,
-        layout: { top: 60, left: 15, width: 400, bottom: 20 },
+        layout: { top: 60, left: 15, width: 400, bottom: 34 },
         contentView: SC.ListView.design({
           contentBinding: 'Twitapp.tweetsController',
           selectionBinding: 'Twitapp.tweetsController.selection',
           exampleView: Twitapp.TweetView,
-          rowHeight: 80,
+          rowHeight: 90,
           rowSpacing: 10
         })
+      }),
+      
+      refreshButton: SC.ButtonView.design({
+        layout: { bottom: 5, right: 15, height: 24, width: 38 },
+        // icon: 'twitapp-subdued-refresh-icon',
+        icon: 'twitapp-glossy-refresh-icon',
+        titleMinWidth:0,
+        title: '',
+        target: 'Orion.searchController',
+        action: 'refresSearch'
       })
     })
   })
