@@ -26,7 +26,9 @@ Twitapp.searchController = SC.ObjectController.create(Twitapp.RecordStatus,
     // console.log('search:(%@), status:(%@)'.fmt(content.get('searchTerm'),status));
     if (status & SC.Record.READY_CLEAN) {
       if (Twitapp.db) {
-       Twitapp.dumpRecordsToDatabase(); 
+        Twitapp.dumpRecordsToDatabase(); 
+      } else {
+        Twitapp.dumpRecordsToUserDefaults();
       }
     }
   }

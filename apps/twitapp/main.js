@@ -19,7 +19,16 @@ Twitapp.main = function main() {
   // Now load the data.
   if (Twitapp.db) {
     Twitapp.loadDatabase();
-  } else Twitapp.loadFixtures();
+  } else {
+    var hasUserDefaults = Twitapp.getPath('userDefaults.savedSearches');
+    if (!hasUserDefaults) {
+      Twitapp.userDefaults.defaults({
+        "TwitappUserDefaults:savedSearches": [{"searchTerm":"sproutcore","unreadTweetsCount":10,"guid":1}]
+      });
+    }
+    Twitapp.loadUserDefaults();
+    Twitapp.loadFixtures();
+  }
 };
 
 // Tries to start the db for client-side storage.  If this works it will set
@@ -63,6 +72,11 @@ Twitapp.loadDatabase = function() {
   }) ;
 } ;
 
+// Load up the user defaults if the HTML5 DB does not exist.
+Twitapp.loadUserDefaults = function() {
+  Twitapp.restroreRecordsFromUserDefaults();
+};
+
 // Actually restores the records from the database...
 Twitapp.restoreRecordsFromDatabase = function() {
   if (!Twitapp.db) return ;
@@ -89,7 +103,22 @@ Twitapp.restoreRecordsFromDatabase = function() {
   });
 };
 
-// Actually saves the records...
+// Restores the records from user defaults.
+Twitapp.restroreRecordsFromUserDefaults = function() {
+  var json = Twitapp.getPath('userDefaults.savedSearches');
+  var recs = eval(json);
+  if (recs) {
+    Twitapp.get('store').loadRecords(Twitapp.Search,recs);
+    console.log('loaded data from UserDefaults');
+    console.log('activating twittersearch data-source');
+    Twitapp.setPath('store.dataSource', 'Twitapp.TwitterDataSource');
+    Twitapp.startApplication();
+  }else{
+    Twitapp.loadFixtures();
+  }
+};
+
+// Actually saves the records to HTML5 DB
 Twitapp.dumpRecordsToDatabase = function() {
   if (!Twitapp.db) return ;
   var recs = Twitapp.get('store').find(Twitapp.Search).invoke('get','attributes');
@@ -97,6 +126,14 @@ Twitapp.dumpRecordsToDatabase = function() {
   Twitapp.db.transaction(function(tx) {
     tx.executeSql("UPDATE TwitappStoreData SET json = ? WHERE id = ?", [str,1]) ;
   });
+};
+
+// Actually saves the records to HTML5 DB
+Twitapp.dumpRecordsToUserDefaults = function() {
+  if (!Twitapp.userDefaults) return ;
+  var recs = Twitapp.get('store').find(Twitapp.Search).invoke('get','attributes');
+  var str = SC.json.encode(recs);
+  Twitapp.setPath('userDefaults.savedSearches',str);
 };
 
 Twitapp.startApplication = function() {
