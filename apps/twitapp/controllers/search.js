@@ -1,6 +1,7 @@
 // ==========================================================================
-// Project:   Twitapp.searchController
-// Copyright: ©2009 My Company, Inc.
+// Project:   Twitapp
+// Copyright: ©2009 (MRD)
+// Author: Josh Holt
 // ==========================================================================
 /*globals Twitapp escape */
 sc_require('mixins/record_status');

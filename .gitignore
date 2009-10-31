@@ -1,2 +1,3 @@
 tmp
 twitapp.vcl
+apps/twitapp/tests/views/service_error.js

@@ -1,6 +1,7 @@
 // ==========================================================================
-// Project:   Twitapp.TwitterDataSource
-// Copyright: ©2009 My Company, Inc.
+// Project:   Twitapp
+// Copyright: ©2009 (MRD)
+// Author: Josh Holt
 // ==========================================================================
 /*globals unescape Twitapp */
 
@@ -35,13 +36,17 @@ Twitapp.TwitterDataSource = SC.DataSource.extend(
   didFetchTweets: function(response, store, query) {
     if (SC.ok(response)) {
       var recs = response.get('body').results;
-      for (var i=0; i < recs.length; i++) {
-        recs[i].guid = recs.length - i;
-        recs[i].searchTerm = unescape(response.get('body').query);
-        recs[i].text = recs[i].text.unescapeHTML();
+      if (recs) {
+        for (var i=0; i < recs.length; i++) {
+          recs[i].guid = recs.length - i;
+          recs[i].searchTerm = unescape(response.get('body').query);
+          recs[i].text = recs[i].text.unescapeHTML();
+        }
+        store.loadRecords(Twitapp.Tweet, recs);
+        store.dataSourceDidFetchQuery(query);
+      } else {
+        store.dataSourceDidErrorQuery(query, response);
       }
-      store.loadRecords(Twitapp.Tweet, recs);
-      store.dataSourceDidFetchQuery(query);
     } else store.dataSourceDidErrorQuery(query, response);
   },
 

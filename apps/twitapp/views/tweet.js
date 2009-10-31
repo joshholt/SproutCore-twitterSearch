@@ -10,6 +10,7 @@
   This view expects content.
 
   @extends SC.View
+  @author Josh Holt
 */
 Twitapp.TweetView = SC.View.extend(SC.Control,
 /** @scope Twitapp.TweetView.prototype */ {

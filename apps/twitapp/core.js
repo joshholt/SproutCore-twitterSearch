@@ -1,12 +1,11 @@
 // ==========================================================================
 // Project:   Twitapp
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 (MRD)
+// Author: Josh Holt
 // ==========================================================================
 /*globals Twitapp escape */
 
 /** @namespace
-
-  My cool new app.  Describe your application.
   
   @extends SC.Object
 */

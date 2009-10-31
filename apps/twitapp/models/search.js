@@ -1,6 +1,7 @@
 // ==========================================================================
-// Project:   Twitapp.Search
-// Copyright: ©2009 My Company, Inc.
+// Project:   Twitapp
+// Copyright: ©2009 (MRD)
+// Author: Josh Holt
 // ==========================================================================
 /*globals escape Twitapp */
 
@@ -10,6 +11,7 @@
 
   @extends SC.Record
   @version 0.1
+  @author Josh Holt
 */
 Twitapp.Search = SC.Record.extend(
 /** @scope Twitapp.Search.prototype */ {

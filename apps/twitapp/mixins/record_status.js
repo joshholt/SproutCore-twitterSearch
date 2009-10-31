@@ -1,11 +1,38 @@
-//============================================================================
-// Twitapp.RecordStatus
-//============================================================================
+// ==========================================================================
+// Project:   Twitapp
+// Copyright: ©2009 (MRD)
+// Author: Josh Holt
+// ==========================================================================
 /*globals Twitapp*/
-/**
 
-  Record Status Observer
-  @author Josh Holt
+/** @mixin
+
+  Record Status Observer Mixin.
+  
+  This mixin provides you with the ability to hook into the status of records
+  being saved, destroyed, updated, etc.. and then do some other action based 
+  on the status of the record.. 
+  
+  Normaly you would mixin this into one of your controllers and then implement
+  the recordStatusDidChange method.
+  
+  Here is an example of it's usage:
+  
+  {{{
+  
+    // This implementation checks for the record to be in a ready_clean state
+    // and then fires off the method to all records to the HTML5 DB.
+    
+    recordStatusDidChange: function(status) {
+      var content = this.get('content');
+      if (status & SC.Record.READY_CLEAN) {
+        if (MyApp.db) {
+         MyApp.dumpRecordsToDatabase(); 
+        }
+      }
+    }
+  
+  }}}
 
 */
 

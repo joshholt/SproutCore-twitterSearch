@@ -1,5 +1,13 @@
 /*globals Twitapp*/
 
+/** @mixin
+
+  This mixin provides the ability to unescapse HTML strings,
+  it supplements The Builtin String Object.
+  
+  @author Josh Holt
+*/
+
 Twitapp.String = {
   
   stripTags: function() {
