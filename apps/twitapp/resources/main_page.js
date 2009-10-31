@@ -71,10 +71,4 @@ Twitapp.mainPage = SC.Page.design({
       })
     })
   })
-  
-  SC.PickerPane.create({
-    contentView: SC.LabelView.design({
-      value: "If you are not able to see the results of your searches, please see this tread https://groups.google.com/group/google-appengine/browse_thread/thread/dda8182648c7e4cd"
-    })
-  }).popup(this.mainPane.containerView.searchView.get('layer'), SC.PICKER_POINTER);
 });
