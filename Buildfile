@@ -5,6 +5,6 @@
 # ==========================================================================
 
 # Add initial buildfile information here
-config :all, :required => :sproutcore
+config :all, :required => [:sproutcore, :twitter_kit]
 
 proxy "/search.json", :to => "search.twitter.com"

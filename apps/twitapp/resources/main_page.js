@@ -14,8 +14,8 @@ Twitapp.mainPage = SC.Page.design({
       layout: { top: 0, left: 0, bottom: 0, width: 245},
       hasHorizontalScroller: NO,
       contentView: SC.SourceListView.design({
-        contentBinding: 'Twitapp.searchesController',
-        selectionBinding: 'Twitapp.searchesController.selection',
+        contentBinding: 'TwitterKit.searchesController',
+        selectionBinding: 'TwitterKit.searchesController.selection',
         contentValueKey: 'searchTerm',
         contentUnreadCountKey: 'unreadTweetsCount'
       })
@@ -36,14 +36,14 @@ Twitapp.mainPage = SC.Page.design({
         searchField: SC.TextFieldView.design({
           layout: { top: 2, left: 10, height: 21, width: 260 },
           hint: "Search for #sproutcore".loc(),
-          valueBinding: 'Twitapp.searchesController.queryString'
+          valueBinding: 'TwitterKit.searchesController.queryString'
         }),
 
         searchButton: SC.ButtonView.design({
           layout: { top: 0, left: 285, height: 24, width: 100},
           title: "Search".loc(),
           isDefault: YES,
-          target: 'Twitapp.searchesController',
+          target: 'TwitterKit.searchesController',
           action: 'search'
         })
       }),
@@ -52,8 +52,8 @@ Twitapp.mainPage = SC.Page.design({
         hasHorizontalScroller: NO,
         layout: { top: 60, left: 15, width: 400, bottom: 34 },
         contentView: SC.ListView.design({
-          contentBinding: 'Twitapp.tweetsController',
-          selectionBinding: 'Twitapp.tweetsController.selection',
+          contentBinding: 'TwitterKit.tweetsController',
+          selectionBinding: 'TwitterKit.tweetsController.selection',
           exampleView: Twitapp.TweetView,
           rowHeight: 90,
           rowSpacing: 10
@@ -66,7 +66,7 @@ Twitapp.mainPage = SC.Page.design({
         icon: 'twitapp-glossy-refresh-icon',
         titleMinWidth:0,
         title: '',
-        target: 'Twitapp.searchController',
+        target: 'TwitterKit.searchController',
         action: 'refreshSearch'
       })
     })
